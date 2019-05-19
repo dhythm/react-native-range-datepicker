@@ -1,8 +1,10 @@
-'use strict';import moment from 'moment';
+'use strict';
+import moment from 'moment';
 import React from 'react';
 import { Text, View } from 'react-native';
 import DayRow from './DayRow';
-th extends React.Component {
+
+export default class Month extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -156,15 +158,15 @@ th extends React.Component {
   }
 
   render() {
-    const { month, dayProps, locale } = this.props;
+    const { month, dayProps } = this.props;
     const dayStack = this.getDayStack(moment(month, 'YYYYMM'));
     return (
       <View>
         <Text style={{ fontSize: 20, paddingHorizontal: 20, paddingTop: 20 }}>
-          {locale === 'ja'
+          {this.props.locale === 'ja'
             ? moment(month, 'YYYYMM')
-                .locale('ja')
-                .format('MMM')
+              .locale('ja')
+              .format('MMM')
             : moment(month, 'YYYYMM').format('MMMM YYYY')}
         </Text>
         <View>
